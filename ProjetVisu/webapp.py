@@ -73,8 +73,7 @@ def generate_graph():
 
          if r2.status_code == 200:
                   data_reply2 = r2.json() #on récupère un dictionnaire dont la structure est expliqué sur le site marvel
-
-
+                  print("DEUXIEME REQUETE")
 
 
          viewLabel = graph.getStringProperty("viewLabel")
@@ -86,7 +85,6 @@ def generate_graph():
                   type_node[n1]="Personnage"
                   char_hash[character["name"]]=n1
                   viewColor[n1]=(0,0,255)
-
 
 
          for comic in data_reply2["data"]["results"]:
@@ -117,14 +115,13 @@ def generate_graph():
                            destination=comic_hash[comic["title"]]
                            graph.addEdge(n,destination)
 
-         params=tlp.getDefaultPluginParameters('FM^3 (OGDF)', graph)
-         params['Node Size']= viewSize
-         params['Edge Length Property']= viewMetric
-         params['result']= viewLayout
-         graph.applyLayoutAlgorithm('FM^3 (OGDF)')
+         #params=tlp.getDefaultPluginParameters('FM^3 (OGDF)', graph)
+         #params['Node Size']= viewSize
+         #params['Edge Length Property']= viewMetric
+         #params['result']= viewLayout
+         #graph.applyLayoutAlgorithm('FM^3 (OGDF)')
 
          #return graph
-
          gjson={'nodes':[],'links':[]}
          for n in graph.getNodes():
                   gjson['nodes'].append({'id':viewLabel[n],'group':type_node[n]})
