@@ -13,10 +13,37 @@
 <svg width="960" height="600"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+
+// Create h1 element on the page
+// Insert variable value in text attribute
+function myFunction(text_content) {
+  var h = document.createElement("h1");
+  var t = document.createTextNode(text_content);
+  h.appendChild(t);
+  document.body.appendChild(h);
+}
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
-var color = d3.scaleOrdinal(d3.schemeCategory20);
+var color = d3.scaleLinear()
+    .domain([0,1,2])
+    .range(["red", "steelblue", "green"]);
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
     .force("charge", d3.forceManyBody())
@@ -72,4 +99,15 @@ function dragended(d) {
   d.fx = null;
   d.fy = null;
 }
+<<<<<<< Updated upstream
+=======
+
+svg.on("click", function() {
+    var node = d3.mouse(this);
+    var newData= 7
+    myFunction("nom du sommet"+ newData)7
+})
+
+
+>>>>>>> Stashed changes
 </script>
